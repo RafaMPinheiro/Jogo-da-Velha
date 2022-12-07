@@ -80,6 +80,10 @@ export default function Game({ playerOne, playerTwo }) {
     }
   }
 
+  const Home = () => {
+    window.location.reload(true)
+  }
+
   return (
     /*<div className="home">
         <h1 className="bem-vindo">Bem-Vindo ao jogo da velha!</h1>*/
@@ -108,11 +112,12 @@ export default function Game({ playerOne, playerTwo }) {
         >
           <h4>RESET</h4>
         </button>
-        <Link to="/" className="link">
-          <button className={`button-end ${winner !== '' ? 'game-over' : ''}`}>
-            <h4>HOME</h4>
-          </button>
-        </Link>
+        <button
+          className={`button-end ${winner !== '' ? 'game-over' : ''}`}
+          onClick={Home}
+        >
+          <h4>HOME</h4>
+        </button>
       </div>
     </div>
   )
