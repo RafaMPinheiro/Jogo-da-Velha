@@ -4,10 +4,10 @@
 
 1. Seleção de personagem. OK!
 2. Mostrar o resultado da partida(empate ou vitória). OK!
+3. Adicionar um botão de home para voltar a seleção de personagens. OK!
 
 ## MELHORIAS FUTURAS (TODO)
 
-1. Adicionar um botão de home para voltar a seleção de personagens.
 2. Quando alguém ganhar, destaque os 3 quadrados que causaram a vitória.
 
 ## LINHAS:
