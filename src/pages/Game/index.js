@@ -85,8 +85,6 @@ export default function Game({ playerOne, playerTwo }) {
   }
 
   return (
-    /*<div className="home">
-        <h1 className="bem-vindo">Bem-Vindo ao jogo da velha!</h1>*/
     <div className="neumorphism">
       <div className={`tabuleiro ${winner ? 'game-over' : ''}`}>
         {board.map((item, index) => (
