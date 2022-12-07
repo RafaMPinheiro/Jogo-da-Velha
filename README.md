@@ -1,3 +1,27 @@
+# Jogo da Velha em React
+
+## MELHORIAS JÁ CONCLUÍDAS
+
+1. Seleção de personagem. OK!
+2. Mostrar o resultado da partida(empate ou vitória). OK!
+
+## MELHORIAS FUTURAS (TODO)
+
+1. Adicionar um botão de home para voltar a seleção de personagens.
+2. Quando alguém ganhar, destaque os 3 quadrados que causaram a vitória.
+
+## LINHAS:
+
+012 - primeira, 345 - segunda, 678 - terceira
+
+## COLUNAS:
+
+036 - Primeira, 147 - Segunda, 258 - Terceira
+
+## DIAGONAIS:
+
+048 - Principal, 246 - Secundária
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
