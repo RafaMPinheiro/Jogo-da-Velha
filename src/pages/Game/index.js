@@ -109,7 +109,10 @@ export default function Game() {
   } else {
     return (
       <div className="game">
-        <a className="github" href="">
+        <a
+          className="github"
+          href="https://github.com/RafaMPinheiro/Jogo-da-Velha.git"
+        >
           GitHub
         </a>
         <div className="neumorphism">
