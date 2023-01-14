@@ -176,3 +176,19 @@ button {
   border: none;
   outline: none;
 }
+
+.github {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  color: #000;
+}
+
+.github-image {
+  height: 30px;
+  width: 30px;
+}

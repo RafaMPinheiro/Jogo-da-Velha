@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Raposa from '../../images/raposa.png'
 import Coelho from '../../images/coelho.png'
 import Crocodilo from '../../images/crocodilo.png'
+import GitHub from '../../images/github.png'
 
 import { db } from '../../firebase/config'
 
@@ -42,6 +43,13 @@ export default function Home() {
   } else {
     return (
       <div className="home">
+        <a
+          className="github"
+          href="https://github.com/RafaMPinheiro/Jogo-da-Velha.git"
+        >
+          <img src={GitHub} alt="GitHub" className="github-image" />
+          <h3>GitHub</h3>
+        </a>
         <div className="neumorphism">
           <div className="content">
             <h1 className="bem-vindo">Bem-Vindo ao jogo da velha!</h1>

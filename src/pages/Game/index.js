@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Raposa from '../../images/raposa.png'
 import Coelho from '../../images/coelho.png'
 import Crocodilo from '../../images/crocodilo.png'
+import GitHub from '../../images/github.png'
 
 import { collection, getDocs, query, where } from 'firebase/firestore'
 import { db } from '../../firebase/config'
@@ -113,7 +114,8 @@ export default function Game() {
           className="github"
           href="https://github.com/RafaMPinheiro/Jogo-da-Velha.git"
         >
-          GitHub
+          <img src={GitHub} alt="GitHub" className="github-image" />
+          <h3>GitHub</h3>
         </a>
         <div className="neumorphism">
           <h1
