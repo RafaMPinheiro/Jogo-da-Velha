@@ -1,15 +1,19 @@
 import { useState } from 'react'
-import raposa from '../../images/raposa.png'
-import coelho from '../../images/coelho.png'
-import crocodilo from '../../images/crocodilo.png'
+import Raposa from '../../images/raposa.png'
+import Coelho from '../../images/coelho.png'
+import Crocodilo from '../../images/crocodilo.png'
+
+import { db } from '../../firebase/config'
+
+import { doc, updateDoc } from 'firebase/firestore'
+
 import './home.css'
-import Game from '../Game'
 
 export default function Home() {
   const [firstPlayer, setFirstPlayer] = useState('')
   const [secondPlayer, setSecondPlayer] = useState('')
   const [gameStarted, setGameStarted] = useState(false)
-  const [showGame, setShowGame] = useState(false)
+  const [redirect, setRedirect] = useState(false)
 
   const SelectFirstCaracter = (caracter) => {
     if (caracter.target.alt !== secondPlayer) {
@@ -18,87 +22,95 @@ export default function Home() {
   }
 
   const SelectSecondCaracter = (caracter) => {
-    if (caracter.target.alt !== firstPlayer) {
+    if (caracter.target.alt !== firstPlayer && firstPlayer !== '') {
       setSecondPlayer(caracter.target.alt)
       setGameStarted(true)
     }
   }
 
-  const StartGame = () => {
-    setShowGame(true)
+  const StartGame = async () => {
+    const q = doc(db, 'game', 'b0tRj1IZEp3C4lvbmN84')
+    await updateDoc(q, {
+      playerOne: firstPlayer, // Salva os personagens no banco de dados
+      playerTwo: secondPlayer, // Salva os personages no banco de dados
+    })
+    setRedirect(true)
   }
 
-  return (
-    <div className="home">
-      <div className="neumorphism" hidden={showGame}>
-        <div className="content">
-          <h1 className="bem-vindo">Bem-Vindo ao jogo da velha!</h1>
-          <h3 className="select">Selecione seu personagem:</h3>
-          <div className="characters">
-            <div className="character">
-              <h4>Primeiro jogador:</h4>
-              <button
-                className={`button ${
-                  firstPlayer === 'raposa' ? 'selected' : ''
-                } ${secondPlayer === 'raposa' ? 'disabled' : ''}`}
-                onClick={SelectFirstCaracter}
-              >
-                <img src={raposa} alt="raposa" />
-              </button>
-              <button
-                className={`button ${
-                  firstPlayer === 'coelho' ? 'selected' : ''
-                } ${secondPlayer === 'coelho' ? 'disabled' : ''}`}
-                onClick={SelectFirstCaracter}
-              >
-                <img src={coelho} alt="coelho" />
-              </button>
-              <button
-                className={`button ${
-                  firstPlayer === 'crocodilo' ? 'selected' : ''
-                } ${secondPlayer === 'crocodilo' ? 'disabled' : ''}`}
-                onClick={SelectFirstCaracter}
-              >
-                <img src={crocodilo} alt="crocodilo" />
-              </button>
+  if (redirect) {
+    window.location.href = '/game'
+  } else {
+    return (
+      <div className="home">
+        <div className="neumorphism">
+          <div className="content">
+            <h1 className="bem-vindo">Bem-Vindo ao jogo da velha!</h1>
+            <h3 className="select">Selecione seu personagem:</h3>
+            <div className="characters">
+              <div className="character">
+                <h4>Primeiro jogador:</h4>
+                <button
+                  className={`button ${
+                    firstPlayer === 'Raposa' ? 'selected' : ''
+                  } ${secondPlayer === 'Raposa' ? 'disabled' : ''}`}
+                  onClick={SelectFirstCaracter}
+                >
+                  <img src={Raposa} alt="Raposa" />
+                </button>
+                <button
+                  className={`button ${
+                    firstPlayer === 'Coelho' ? 'selected' : ''
+                  } ${secondPlayer === 'Coelho' ? 'disabled' : ''}`}
+                  onClick={SelectFirstCaracter}
+                >
+                  <img src={Coelho} alt="Coelho" />
+                </button>
+                <button
+                  className={`button ${
+                    firstPlayer === 'Crocodilo' ? 'selected' : ''
+                  } ${secondPlayer === 'Crocodilo' ? 'disabled' : ''}`}
+                  onClick={SelectFirstCaracter}
+                >
+                  <img src={Crocodilo} alt="Crocodilo" />
+                </button>
+              </div>
+              <div className="character">
+                <h4>Segundo jogador:</h4>
+                <button
+                  className={`button ${
+                    secondPlayer === 'Raposa' ? 'selected' : ''
+                  } ${firstPlayer === 'Raposa' ? 'disabled' : ''}`}
+                  onClick={SelectSecondCaracter}
+                >
+                  <img src={Raposa} alt="Raposa" />
+                </button>
+                <button
+                  className={`button ${
+                    secondPlayer === 'Coelho' ? 'selected' : ''
+                  } ${firstPlayer === 'Coelho' ? 'disabled' : ''}`}
+                  onClick={SelectSecondCaracter}
+                >
+                  <img src={Coelho} alt="Coelho" />
+                </button>
+                <button
+                  className={`button ${
+                    secondPlayer === 'Crocodilo' ? 'selected' : ''
+                  } ${firstPlayer === 'Crocodilo' ? 'disabled' : ''}`}
+                  onClick={SelectSecondCaracter}
+                >
+                  <img src={Crocodilo} alt="Crocodilo" />
+                </button>
+              </div>
             </div>
-            <div className="character">
-              <h4>Segundo jogador:</h4>
-              <button
-                className={`button ${
-                  secondPlayer === 'raposa' ? 'selected' : ''
-                } ${firstPlayer === 'raposa' ? 'disabled' : ''}`}
-                onClick={SelectSecondCaracter}
-              >
-                <img src={raposa} alt="raposa" />
-              </button>
-              <button
-                className={`button ${
-                  secondPlayer === 'coelho' ? 'selected' : ''
-                } ${firstPlayer === 'coelho' ? 'disabled' : ''}`}
-                onClick={SelectSecondCaracter}
-              >
-                <img src={coelho} alt="coelho" />
-              </button>
-              <button
-                className={`button ${
-                  secondPlayer === 'crocodilo' ? 'selected' : ''
-                } ${firstPlayer === 'crocodilo' ? 'disabled' : ''}`}
-                onClick={SelectSecondCaracter}
-              >
-                <img src={crocodilo} alt="crocodilo" />
-              </button>
-            </div>
+            <button
+              className={`button-start ${gameStarted ? 'ready' : ''}`}
+              onClick={StartGame}
+            >
+              <h4>JOGAR</h4>
+            </button>
           </div>
-          <button
-            className={`button-start ${gameStarted ? 'ready' : ''}`}
-            onClick={StartGame}
-          >
-            <h4>JOGAR</h4>
-          </button>
         </div>
       </div>
-      {showGame && <Game playerOne={firstPlayer} playerTwo={secondPlayer} />}
-    </div>
-  )
+    )
+  }
 }
