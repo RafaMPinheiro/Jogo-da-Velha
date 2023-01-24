@@ -1,5 +1,9 @@
 # Jogo da Velha em React
 
+## CASO QUEIRA VER O JOGO EM FUNCIONAMENTO
+
+https://jogo-da-velha-peach-eta.vercel.app/
+
 ## MELHORIAS JÁ CONCLUÍDAS
 
 1. Seleção de personagem. OK!
