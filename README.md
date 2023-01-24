@@ -5,10 +5,11 @@
 1. Seleção de personagem. OK!
 2. Mostrar o resultado da partida(empate ou vitória). OK!
 3. Adicionar um botão de home para voltar a seleção de personagens. OK!
+4. Quando alguém ganhar, destaque os 3 quadrados que causaram a vitória. OK!
 
 ## MELHORIAS FUTURAS (TODO)
 
-2. Quando alguém ganhar, destaque os 3 quadrados que causaram a vitória.
+1. Deixa-lo responsivo.
 
 ## LINHAS:
 
