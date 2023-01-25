@@ -16,12 +16,14 @@ export default function Home() {
   const [gameStarted, setGameStarted] = useState(false)
   const [redirect, setRedirect] = useState(false)
 
+  //Desabilita o botão de seleção de personagem caso o personagem já tenha sido selecionado
   const SelectFirstCaracter = (caracter) => {
     if (caracter.target.alt !== secondPlayer) {
       setFirstPlayer(caracter.target.alt)
     }
   }
 
+  //Desabilita o botão de seleção de personagem caso o personagem já tenha sido selecionado
   const SelectSecondCaracter = (caracter) => {
     if (caracter.target.alt !== firstPlayer && firstPlayer !== '') {
       setSecondPlayer(caracter.target.alt)
@@ -29,6 +31,7 @@ export default function Home() {
     }
   }
 
+  //Inicia o jogo
   const StartGame = async () => {
     const q = doc(db, 'game', 'b0tRj1IZEp3C4lvbmN84')
     await updateDoc(q, {
@@ -50,7 +53,7 @@ export default function Home() {
           <img src={GitHub} alt="GitHub" className="github-image" />
           <h3>GitHub</h3>
         </a>
-        <div className="neumorphism">
+        <div className="neumorphism-home">
           <div className="content">
             <h1 className="bem-vindo">Bem-Vindo ao jogo da velha!</h1>
             <h3 className="select">Selecione seu personagem:</h3>
